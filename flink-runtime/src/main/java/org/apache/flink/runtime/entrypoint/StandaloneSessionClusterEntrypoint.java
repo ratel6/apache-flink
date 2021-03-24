@@ -46,6 +46,7 @@ public class StandaloneSessionClusterEntrypoint extends SessionClusterEntrypoint
         SignalHandler.register(LOG);
         JvmShutdownSafeguard.installAsShutdownHook(LOG);
 
+        // todo 加载配置
         final EntrypointClusterConfiguration entrypointClusterConfiguration =
                 ClusterEntrypointUtils.parseParametersOrExit(
                         args,

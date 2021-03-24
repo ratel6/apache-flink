@@ -220,6 +220,16 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
     private void runCluster(Configuration configuration, PluginManager pluginManager)
             throws Exception {
         synchronized (lock) {
+            /**
+             * todo 组件初始化:
+             * commonRpcService;
+             * haServices;
+             * blobServer;
+             * heartbeatServices;
+             * metricRegistry;
+             * processMetricGroup;
+             * archivedExecutionGraphStore;
+             */
             initializeServices(configuration, pluginManager);
 
             // write host information into configuration
@@ -230,6 +240,9 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                     dispatcherResourceManagerComponentFactory =
                             createDispatcherResourceManagerComponentFactory(configuration);
 
+            /**
+             * todo 创建 dispatcher，resourceManager
+             */
             clusterComponent =
                     dispatcherResourceManagerComponentFactory.create(
                             configuration,

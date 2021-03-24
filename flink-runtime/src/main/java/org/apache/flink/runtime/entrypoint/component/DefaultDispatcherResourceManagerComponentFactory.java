@@ -173,6 +173,11 @@ public class DefaultDispatcherResourceManagerComponentFactory
 
             final String hostname = RpcUtils.getHostname(rpcService);
 
+            /**
+             * todo resourceManager 创建
+             * 先创建 ResourceManagerRuntimeServices  包含slotManager，JobLeaderIdService
+             * 在创建 resourceManager
+             */
             resourceManager =
                     resourceManagerFactory.createResourceManager(
                             configuration,
@@ -208,6 +213,9 @@ public class DefaultDispatcherResourceManagerComponentFactory
                             ioExecutor);
 
             log.debug("Starting Dispatcher.");
+            /**
+             * todo 创建并启动  dispatcher runner
+             */
             dispatcherRunner =
                     dispatcherRunnerFactory.createDispatcherRunner(
                             highAvailabilityServices.getDispatcherLeaderElectionService(),
